@@ -1,10 +1,16 @@
+# Bagisto Account
 # account: 
 # admin@admin@example.com:admin123
+
+compose_file='dev-apache-docker-compose.yml'
+gitpod_80=$(gp url 80)  
+sed -i "/APP_URL/c\APP_URL=${gitpod_80}" ".configs/.env"
+
 # just to be sure that no traces left
-docker-compose -f dev-docker-compose.yml down -v
+docker-compose -f ${compose_file} down -v
 
 # building and running docker-compose file
-docker-compose -f dev-docker-compose.yml build && docker-compose -f dev-docker-compose.yml up -d
+docker-compose -f ${compose_file} build && docker-compose -f ${compose_file} up -d
 
 # container id by image name
 apache_container_id=$(docker ps -aqf "name=bagisto-php-apache")
