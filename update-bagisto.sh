@@ -19,7 +19,7 @@ docker cp .configs/.env ${apache_container_id}:/var/www/html/bagisto/.env
 ## Bagisto
 # docker exec -i ${apache_container_id} bash -c "cd bagisto && php artisan optimize:clear && php artisan migrate:fresh --seed && php artisan storage:link && php artisan bagisto:publish --force && php artisan optimize:clear"
 docker exec -i ${apache_container_id} bash -c "cd bagisto && php artisan optimize:clear"
-docker exec -i ${apache_container_id} bash -c "cd bagisto && php artisan migrate:fresh --seed"
+# docker exec -i ${apache_container_id} bash -c "cd bagisto && php artisan migrate:fresh --seed"
 docker exec -i ${apache_container_id} bash -c "cd bagisto && php artisan storage:link"
 docker exec -i ${apache_container_id} bash -c "cd bagisto && php artisan bagisto:publish --force"
 docker exec -i ${apache_container_id} bash -c "cd bagisto && php artisan optimize:clear"
