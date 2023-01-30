@@ -1,7 +1,7 @@
 version: '3.1'
 
 services:
-    bagisto-php-apache:
+    trkomerce-php-apache:
         build:
             args:
                 container_project_path: /var/www/html/
@@ -9,13 +9,13 @@ services:
                 user: $USER
             context: .
             dockerfile: ./apache/Dockerfile
-        image: bagisto-php-apache
+        image: trkomerce-php-apache
         ports:
             - 80:80
         volumes:
             - ./workspace/:/var/www/html/
 
-    bagisto-mysql:
+    trkomerce-mysql:
         image: mysql:8.0
         command: --default-authentication-plugin=mysql_native_password
         restart: always
@@ -27,11 +27,11 @@ services:
         volumes:
             - ./.configs/mysql-data:/var/lib/mysql/
 
-    bagisto-phpmyadmin:
+    trkomerce-phpmyadmin:
         image: phpmyadmin:latest
         restart: always
         environment:
-            PMA_HOST: bagisto-mysql
+            PMA_HOST: trkomerce-mysql
             PMA_USER: root
             PMA_PASSWORD: root
         ports:
